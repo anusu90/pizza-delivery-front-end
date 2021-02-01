@@ -4,10 +4,13 @@ import { AppContext } from "../CONTEXTS/contexts"
 
 export default function ReadyPizzaItem(props) {
 
+
     const [cartList, setCartList] = useContext(AppContext).cartState;
 
-    const addToCart = () => {
-        setCartList(() => [...cartList, props.item])
+    const addToCart = (cartList) => {
+
+        cartList = [...cartList, props.item]
+        setCartList(() => [...cartList])
         console.log(props.item, cartList)
     }
 
@@ -20,7 +23,7 @@ export default function ReadyPizzaItem(props) {
                 <Card.Text style={{ fontSize: "14px" }}>
                     {props.item.discription}
                 </Card.Text>
-                <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
+                <Button variant="primary" onClick={() => addToCart(cartList)}>Add to Cart</Button>
             </Card.Body>
         </Card>
     )

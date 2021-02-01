@@ -1,33 +1,42 @@
 import './App.css';
 import Nav from "./nav/navbar"
 import Homeslider from "./homeslider/homeslider"
-import Info from "./info/info"
+
+// import Info from "./info/info"
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation,
+  useHistory
 } from "react-router-dom";
 
 import Login from "./login/login"
 import Register from "./register/register"
 import Menu from "./menu/menu"
 import Footer from "./footer/footer"
+import Ownpizza from "./ownpizza/ownpizza"
+
+import { ProtectedRoute } from "./protectedroute/protectedroute"
+
+
 import { AppProvider } from "./CONTEXTS/contexts"
 
 function App() {
+
   return (
     <>
       <AppProvider>
-
         <Router>
           <Switch>
             <Route path="/">
               <Nav></Nav>
               <Switch>
-                <Route path="/login" exact><Login /></Route>
+                <Route path="/login" exact ><Login /></Route>
                 <Route path="/register" exact><Register /></Route>
-                <Route path="/Menu" exact><Menu /></Route>
+                <ProtectedRoute component={Menu} path="/menu" exact />
+                <ProtectedRoute component={Ownpizza} path="/ownpizza" exact />
                 <Homeslider />
               </Switch>
               <Footer></Footer>

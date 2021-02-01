@@ -11,7 +11,6 @@ export const AppProvider = (props) => {
         <AppContext.Provider
             value={{ userState: [userStatus, setUserStatus], cartState: [cartList, setCartList] }}
         >
-
             { props.children}
 
         </AppContext.Provider >

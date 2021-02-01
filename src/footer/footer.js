@@ -25,13 +25,13 @@ export default function Footer() {
                 <div className="row h-100 align-items-center">
 
                     <div className="col-sm-4 text-center">
-                        <i class="fab fa-twitter"></i>
+                        <i className="fab fa-twitter"></i>
                     </div>
                     <div className="col-sm-4 text-center">
-                        <i class="fab fa-facebook-f"></i>
+                        <i className="fab fa-facebook-f"></i>
                     </div>
                     <div className="col-sm-4 text-center">
-                        <i class="fab fa-instagram"></i>
+                        <i className="fab fa-instagram"></i>
                     </div>
                 </div>
             </div>

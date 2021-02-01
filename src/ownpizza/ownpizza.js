@@ -1,4 +1,4 @@
-function Ownpizza (){
+function Ownpizza() {
 
     return (
         <div>
