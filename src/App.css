@@ -1,9 +1,15 @@
+#root {
+  height: 100vh;
+}
 .homeslider {
   height: 80vh;
 }
 
 .footer {
   height: 80px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer-left {
@@ -34,4 +40,14 @@
 .fab {
   color: #121618;
   font-size: 32px;
+}
+
+.form-label {
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.forgotPass {
+  font-size: 16px;
+  font-weight: 600;
 }

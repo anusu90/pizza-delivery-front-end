@@ -6,10 +6,11 @@ export const AppProvider = (props) => {
 
     const [userStatus, setUserStatus] = useState(false);
     const [cartList, setCartList] = useState([]);
+    const [user, setuser] = useState({ name: "", email: "", address: "", phone: "" });
 
     return (
         <AppContext.Provider
-            value={{ userState: [userStatus, setUserStatus], cartState: [cartList, setCartList] }}
+            value={{ userState: [userStatus, setUserStatus], cartState: [cartList, setCartList], whichUser: [user, setuser] }}
         >
             { props.children}
 

@@ -15,7 +15,7 @@ function Homeslider() {
             </div>
             <div className="col-md-4">
 
-                Some more text
+                YO MAN
 
             </div>
 
