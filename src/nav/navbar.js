@@ -11,9 +11,7 @@ function Nav() {
           </button>
                 <div className="collapse navbar-collapse" id="ftco-nav">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item active"><a href="index.html" className="nav-link">Home</a></li>
-
-
+                        <li className="nav-item"><span className="nav-link"><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></span></li>
                         <li className="nav-item"><span className="nav-link"><Link to="/menu" style={{ textDecoration: 'none' }}>Menu</Link></span></li>
                         <li className="nav-item"><span className="nav-link"><Link to="/ownpizza" style={{ textDecoration: 'none' }}>Create Your Own Pizza</Link></span></li>
                         <li className="nav-item"><span className="nav-link"><Link to="/contact" style={{ textDecoration: 'none' }}>Contact</Link></span></li>

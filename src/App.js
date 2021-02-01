@@ -9,14 +9,27 @@ import {
   Link
 } from "react-router-dom";
 
+import Login from "./login/login"
+import Register from "./register/register"
+import Menu from "./menu/menu"
+import Footer from "./footer/footer"
+
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Nav></Nav>
-          <Homeslider></Homeslider>
-          <Info></Info>
+          <Route path="/">
+            <Nav></Nav>
+            <Switch>
+              <Route path="/login" exact><Login /></Route>
+              <Route path="/register" exact><Register /></Route>
+              <Route path="/Menu" exact><Menu /></Route>
+              <Homeslider />
+            </Switch>
+            <Footer></Footer>
+            {/* <Info></Info> */}
+          </Route>
         </Switch>
       </Router>
     </>
