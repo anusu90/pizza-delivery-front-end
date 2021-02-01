@@ -13,25 +13,29 @@ import Login from "./login/login"
 import Register from "./register/register"
 import Menu from "./menu/menu"
 import Footer from "./footer/footer"
+import { AppProvider } from "./CONTEXTS/contexts"
 
 function App() {
   return (
     <>
-      <Router>
-        <Switch>
-          <Route path="/">
-            <Nav></Nav>
-            <Switch>
-              <Route path="/login" exact><Login /></Route>
-              <Route path="/register" exact><Register /></Route>
-              <Route path="/Menu" exact><Menu /></Route>
-              <Homeslider />
-            </Switch>
-            <Footer></Footer>
-            {/* <Info></Info> */}
-          </Route>
-        </Switch>
-      </Router>
+      <AppProvider>
+
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Nav></Nav>
+              <Switch>
+                <Route path="/login" exact><Login /></Route>
+                <Route path="/register" exact><Register /></Route>
+                <Route path="/Menu" exact><Menu /></Route>
+                <Homeslider />
+              </Switch>
+              <Footer></Footer>
+              {/* <Info></Info> */}
+            </Route>
+          </Switch>
+        </Router>
+      </AppProvider>
     </>
   );
 }
