@@ -1,16 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 import Nav from "./nav/navbar"
 import Homeslider from "./homeslider/homeslider"
 import Info from "./info/info"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
-
     <>
-    <Nav></Nav>
-    <Homeslider></Homeslider>
-    <Info></Info>
+      <Router>
+        <Switch>
+          <Nav></Nav>
+          <Homeslider></Homeslider>
+          <Info></Info>
+        </Switch>
+      </Router>
     </>
   );
 }
