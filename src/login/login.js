@@ -1,23 +1,59 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { Form, Button } from "react-bootstrap"
-
-
-
-
+import { Form, Button } from "react-bootstrap";
+import { AppContext } from "../CONTEXTS/contexts";
 
 function Login(props) {
     let history = useHistory();
     let location = useLocation();
 
+    const [userStatus, setUserStatus] = useContext(AppContext).userState;
+    const [user, setuser] = useContext(AppContext).whichUser;
+    // const [cartList, setCartList] = useContext(AppContext).cartState;
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleLoginAttempt = (e) => {
+    async function handleLoginAttempt(e, user) {
 
         e.preventDefault();
-        console.log(email, password)
+
+        let url = String(process.env.REACT_APP_BACKEND_URL) + "/users/login";
+        let data = {
+            email: email,
+            password: password
+        }
+
+        let loginRequest = await fetch(url, {
+            method: "POST",
+            mode: "cors",
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data)
+        })
+
+        let loginReqBody = await loginRequest.json()
+
+        if (loginRequest.status === 200) {
+
+            user = loginReqBody;
+
+            setUserStatus(true);
+            setuser(user);
+            console.log(user);
+
+            history.push("/")
+
+
+
+        } else {
+
+            setError(loginReqBody.message)
+        }
 
     }
 
@@ -39,7 +75,7 @@ function Login(props) {
                     </Form.Group>
 
                     <div className="row justify-content-center">
-                        <Button style={{ width: "50%" }} variant="primary" type="submit" onClick={(e) => handleLoginAttempt(e)}>
+                        <Button style={{ width: "50%" }} variant="primary" type="submit" onClick={(e) => handleLoginAttempt(e, user)}>
                             Submit
                         </Button>
 
@@ -49,14 +85,14 @@ function Login(props) {
 
                     <div className="row justify-content-center">
 
-                        <Link>
+                        <Link to="forgotpassword">
                             <span className="forgotPass">
                                 Forgot Password?</span>
                         </Link>
                     </div>
 
                     <div className="row justify-content-center">
-                        <Form.Label>{error}</Form.Label>
+                        <Form.Label> <span> {error} </span> </Form.Label>
                     </div>
 
                 </Form>

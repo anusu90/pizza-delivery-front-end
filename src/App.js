@@ -17,6 +17,7 @@ import Register from "./register/register"
 import Menu from "./menu/menu"
 import Footer from "./footer/footer"
 import Ownpizza from "./ownpizza/ownpizza"
+import LogOut from "./logout/logout"
 
 import { ProtectedRoute } from "./protectedroute/protectedroute"
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/register" exact><Register /></Route>
                 <ProtectedRoute component={Menu} path="/menu" exact />
                 <ProtectedRoute component={Ownpizza} path="/ownpizza" exact />
+                <ProtectedRoute component={LogOut} path="/logout" exact />
                 <Homeslider />
               </Switch>
               <Footer></Footer>
