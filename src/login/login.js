@@ -84,8 +84,7 @@ function Login(props) {
                     <br />
 
                     <div className="row justify-content-center">
-
-                        <Link to="forgotpassword">
+                        <Link to="/forgotpassword">
                             <span className="forgotPass">
                                 Forgot Password?</span>
                         </Link>

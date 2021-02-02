@@ -99,9 +99,6 @@ function Register() {
                 history.push("/")
             }
 
-
-
-
         }
 
     }
@@ -112,7 +109,6 @@ function Register() {
 
                 <Form>
                     <Form.Row>
-
                         <Form.Group as={Col} controlId="firstname">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control value={firstname} onChange={(e) => { setFirstName(e.target.value) }} type="text" placeholder="Enter First Name" required />
@@ -170,6 +166,13 @@ function Register() {
                     <div className="row justify-content-center">
                         <Button variant="primary" type="submit" style={{ width: "75%" }} onClick={(e) => { handleRegisterationSubmission(e) }}>
                             Register </Button>
+                    </div>
+
+                    <div className="row justify-content-center">
+                        <Link to="/forgotpassword">
+                            <span className="forgotPass">
+                                Forgot Password?</span>
+                        </Link>
                     </div>
 
                     <div className="row justify-content-center">

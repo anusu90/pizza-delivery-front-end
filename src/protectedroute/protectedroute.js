@@ -5,6 +5,7 @@ import { AppContext } from "../CONTEXTS/contexts";
 
 
 
+
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
 
     let history = useHistory();
@@ -18,7 +19,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
         <Route {...rest}>
             {
-                (userStatus) ? <Component /> : <Redirect to="/"></Redirect>
+                (userStatus) ? <Component /> : <Redirect to="/login"></Redirect>
             }
         </Route>
 
