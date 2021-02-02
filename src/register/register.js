@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Button, Col } from "react-bootstrap"
+import { Link, useHistory, useLocation } from 'react-router-dom'
 
 
 
 function Register() {
+
+    let history = useHistory();
+    let location = useLocation();
 
 
     const [firstname, setFirstName] = useState("");
@@ -15,7 +19,7 @@ function Register() {
     const [city, SetCity] = useState("");
     const [state, SetState] = useState("");
     const [zip, SetZip] = useState("");
-    const [error, SetError] = useState("ERROR HERE");
+    const [error, SetError] = useState("");
 
     let stateList = ["Andhra Pradesh",
         "Arunachal Pradesh",
@@ -54,11 +58,52 @@ function Register() {
         "Lakshadweep",
         "Puducherry"]
 
-    const handleRegisterationSubmission = (e) => {
+    async function handleRegisterationSubmission(e) {
         e.preventDefault();
-        let data = {
+
+        if (password !== confirmpassword) {
+
+            SetError("Passwords Dont Match")
+
+        } else {
+
+            let url = String(process.env.REACT_APP_BACKEND_URL) + "/users/register";
+
+            let data = {
+                firstname: firstname,
+                secondName: secondName,
+                email: email,
+                password: password,
+                address: address,
+                city: city,
+                state: state,
+                zip: zip
+            }
+            let registerRequest = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: JSON.stringify(data)
+            });
+
+            let registerReqBody = await registerRequest.json()
+            console.log(registerReqBody, registerRequest.status)
+
+            if (registerRequest.status !== 200) {
+                SetError(registerReqBody.message)
+
+            } else {
+
+                history.push("/")
+            }
+
+
+
 
         }
+
     }
 
     return (
@@ -128,7 +173,7 @@ function Register() {
                     </div>
 
                     <div className="row justify-content-center">
-                        <Form.Label>{error}</Form.Label>
+                        <Form.Label> <span> {error} </span> </Form.Label>
                     </div>
 
 

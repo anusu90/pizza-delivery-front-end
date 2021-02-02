@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+// import { auth } from "../firebase"
 
 export const AppContext = React.createContext()
+
+
 
 export const AppProvider = (props) => {
 
