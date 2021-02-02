@@ -19,6 +19,7 @@ import Footer from "./footer/footer"
 import Ownpizza from "./ownpizza/ownpizza"
 import LogOut from "./logout/logout"
 import ForgotPassword from "./forgotpassword/forgotpassword"
+import Cart from "./cart/cart"
 
 import { ProtectedRoute } from "./protectedroute/protectedroute"
 
@@ -40,6 +41,7 @@ function App() {
                 <ProtectedRoute component={Menu} path="/menu" exact />
                 <ProtectedRoute component={Ownpizza} path="/ownpizza" exact />
                 <ProtectedRoute component={LogOut} path="/logout" exact />
+                <ProtectedRoute component={Cart} path="/cart" exact />
                 <Route path="/forgotpassword" exact><ForgotPassword /></Route>
                 <Homeslider />
               </Switch>
